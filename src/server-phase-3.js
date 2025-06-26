@@ -2,12 +2,14 @@
 
 // 3rd Party Dependencies (modules)
 const express = require('express');
+const food = require ('./routes/food.js');
+const people = require ('./routes/people.model.js');
 
 // Our own custom modules
 const notFoundHandler = require('./error-handlers/404.js');
 const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/logger.js');
-const peopleRoutes = require('./routes/people.js');
+
 
 const app = express();
 
@@ -16,10 +18,8 @@ app.use(express.json());
 
 // Our own Global Middleware
 app.use(logger);
-
-// Use our routes from the routing module...
-app.use(peopleRoutes);
-
+app.use(food);
+app.use(people);
 
 // Our Error Handlers -- need to be the last things defined!
 // These use the external modules we required above

@@ -9,7 +9,7 @@ const sequelizeOptions = process.env.NODE_ENV === 'test'
   ? {}
   : {
       dialectOptions: {
-        ssl: {
+        ssl: { // standard, add toward the end of the page
           require: true,
           rejectUnauthorized: false,
         },
@@ -25,7 +25,11 @@ sequelize.authenticate()
 // Load model
 const people = require('./people.model.js');
 
+const food = require('./food.js');
+
 module.exports = {
   db: sequelize,
   People: people(sequelize, DataTypes),
+    Food: food(sequelize, DataTypes),
+    
 };
