@@ -4,6 +4,7 @@
 const express = require('express');
 const food = require ('./routes/food.js');
 const people = require ('./routes/people.model.js');
+const clothes = require ('./routes/clothes.js');
 
 // Our own custom modules
 const notFoundHandler = require('./error-handlers/404.js');
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(logger);
 app.use(food);
 app.use(people);
+app.use(clothes);
 
 // Our Error Handlers -- need to be the last things defined!
 // These use the external modules we required above
