@@ -28,6 +28,24 @@ app.use(clothes);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
+// New models
+const foodModel = foodSchema(sequelize, DataTypes);
+const clothesModel = clothesSchema(sequelize, DataTypes);
+
+// One food has many clothes
+foodModel.hasMany(clothesModel, {
+  foreignKey: 'foodId',      // foreign key in the clothes table
+  sourceKey: 'id',           // primary key in the food table
+  as: 'Clothes',             // name to access clothes from a food item
+});
+
+// Each clothing item belongs to one food item
+clothesModel.belongsTo(foodModel, {
+  foreignKey: 'foodId',      // same key in clothes table
+  targetKey: 'id',           // primary key in the food table
+  as: 'Food',                // name to access food from a clothing item
+});
+
 // Export an object with the express app and separate method that can start the server
 module.exports = {
   server: app,
