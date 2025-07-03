@@ -2,11 +2,11 @@
 
 const Food = (sequelize, DataTypes) => sequelize.define('Food', {
   foodName: {
-    tyoe: DataTypes.STRING,
+    type: DataTypes.STRING,
     allowNull: false,
   },
   calories: {
-    type: DataTypes.INTERGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
   }
 });

@@ -1,5 +1,10 @@
 'use strict';
 
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
+const foodSchema = require('./models/food.js');
+const clothesSchema = require('./models/clothes.js'); 
+
 // 3rd Party Dependencies (modules)
 const express = require('express');
 const food = require ('./routes/food.js');
